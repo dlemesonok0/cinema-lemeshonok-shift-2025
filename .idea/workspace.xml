@@ -4,15 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a80ba48-1ba5-4ac8-a3ce-ed9288fe2324" name="Changes" comment="" />
+    <list default="true" id="7a80ba48-1ba5-4ac8-a3ce-ed9288fe2324" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/Exit.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Logo_Cinema.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Mode.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Ticket.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/User.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Feed.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MovieCard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/NavBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;dlemesonok0&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/dlemesonok0/cinema-lemeshonok-shift-2025.git&quot;,
+    &quot;accountId&quot;: &quot;ef871237-5869-457d-a8fb-8d0aadd3dd30&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
@@ -23,21 +58,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/dleme/WebstormProjects/cinema-lemeshonok-shift-2025",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mainpage&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dleme/WebstormProjects/cinema-lemeshonok-shift-2025&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\dleme\\WebstormProjects\\cinema-lemeshonok-shift-2025\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dleme\WebstormProjects\cinema-lemeshonok-shift-2025\public" />
+      <recent name="C:\Users\dleme\WebstormProjects\cinema-lemeshonok-shift-2025\src" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -57,7 +99,10 @@
       <workItem from="1751554660104" duration="84000" />
       <workItem from="1751554777872" duration="184000" />
       <workItem from="1751554982802" duration="45000" />
-      <workItem from="1751555058688" duration="393000" />
+      <workItem from="1751555058688" duration="2974000" />
+      <workItem from="1751558071800" duration="1791000" />
+      <workItem from="1751559889945" duration="1057000" />
+      <workItem from="1751621817876" duration="8806000" />
     </task>
     <servers />
   </component>
