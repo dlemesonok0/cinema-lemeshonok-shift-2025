@@ -29,3 +29,5 @@ body {
   --color-border: #CED2DA;
   --color-textTab: #141C24;
 }
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
