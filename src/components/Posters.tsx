@@ -1,9 +1,8 @@
 'use client';
 
-// import Link from 'next/link';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
-import Movie from '../types';
+import {Movie} from '@/types';
 import MovieCard from "@/components/MovieCard";
 
 const Posters: React.FC = () => {
@@ -26,7 +25,7 @@ const Posters: React.FC = () => {
     return (
         <div className='flex flex-wrap gap-8 min-w-4xl text-textTab dark:text-white'>
             {movies.map(movie => (
-                <MovieCard key={movie.id} movie={movie} />
+                <MovieCard key={movie.id} movie={movie}/>
             ))}
         </div>
     );

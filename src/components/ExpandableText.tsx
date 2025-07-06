@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Movie from '@/types';
 
 interface ExpandableTextProps {
     text: string;
@@ -7,7 +6,7 @@ interface ExpandableTextProps {
     className?: string;
 }
 
-const ExpandableText: React.FC<ExpandableTextProps> = ({text='', maxLength=150, className=''}) => {
+const ExpandableText: React.FC<ExpandableTextProps> = ({text = '', maxLength = 150, className = ''}) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     if (text.length < maxLength) {

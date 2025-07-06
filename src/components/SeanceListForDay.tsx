@@ -33,7 +33,10 @@ const SeanceListForDay = ({schedule, onSelectTime}: { schedule: Schedule, onSele
                             {groupedSeances[hallName].sort((a, b) => a.time.localeCompare(b.time)).map((seance) => {
                                 const isSelected = seance.time === time && hall === hallName;
                                 return (
-                                    <span className={`cursor-pointer border-1 border-indicatorLight rounded-2xl py-2.5 px-4 ${isSelected ? 'bg-indicatorLight dark:bg-textSecondary border-none' : null}`} key={seance.time} onClick={() => handleTime(seance.time, seance.hall)}>{seance.time}</span>
+                                    <span
+                                        className={`cursor-pointer border-1 border-indicatorLight rounded-2xl py-2.5 px-4 ${isSelected ? 'bg-indicatorLight dark:bg-textSecondary border-none' : null}`}
+                                        key={seance.time}
+                                        onClick={() => handleTime(seance.time, seance.hall)}>{seance.time}</span>
                                 )
                             })}
                         </div>

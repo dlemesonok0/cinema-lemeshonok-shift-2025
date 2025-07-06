@@ -6,7 +6,7 @@ import axios from "axios";
 import ChooseDay from '@/components/ChooseDay';
 import SeanceListForDay from '@/components/SeanceListForDay';
 
-const ScheduleTable = ({movie}: {movie: Movie}) => {
+const ScheduleTable = ({movie}: { movie: Movie }) => {
     const [schedules, setSchedules] = useState<Schedule[]>([]);
     const [schedule, setSchedule] = useState<Schedule>();
     const [time, setTime] = useState('');
@@ -36,7 +36,7 @@ const ScheduleTable = ({movie}: {movie: Movie}) => {
     return (
         <div className='flex flex-col gap-6'>
             <h2 className='text-3xl font-bold'>Расписание</h2>
-            <ChooseDay schedules={schedules} onSelectDate={handleSchedule} />
+            <ChooseDay schedules={schedules} onSelectDate={handleSchedule}/>
             {schedule ? <SeanceListForDay schedule={schedule} onSelectTime={handleTime}/> : null}
         </div>
     );
