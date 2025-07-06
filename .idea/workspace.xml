@@ -4,21 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a80ba48-1ba5-4ac8-a3ce-ed9288fe2324" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/Exit.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Logo_Cinema.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Mode.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Ticket.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/User.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Feed.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MovieCard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NavBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Tab.tsx" afterDir="false" />
+    <list default="true" id="7a80ba48-1ba5-4ac8-a3ce-ed9288fe2324" name="Changes" comment="feat theme switcher">
+      <change afterPath="$PROJECT_DIR$/public/Star.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MovieCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Posters.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StarRating.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +44,9 @@
     &quot;accountId&quot;: &quot;ef871237-5869-457d-a8fb-8d0aadd3dd30&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
@@ -63,6 +62,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;mainpage&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/dleme/WebstormProjects/cinema-lemeshonok-shift-2025&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -78,6 +78,8 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dleme\WebstormProjects\cinema-lemeshonok-shift-2025\public" />
       <recent name="C:\Users\dleme\WebstormProjects\cinema-lemeshonok-shift-2025\src" />
+      <recent name="C:\Users\dleme\WebstormProjects\cinema-lemeshonok-shift-2025\types" />
+      <recent name="C:\Users\dleme\WebstormProjects\cinema-lemeshonok-shift-2025" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -102,8 +104,35 @@
       <workItem from="1751555058688" duration="2974000" />
       <workItem from="1751558071800" duration="1791000" />
       <workItem from="1751559889945" duration="1057000" />
-      <workItem from="1751621817876" duration="8806000" />
+      <workItem from="1751621817876" duration="30888000" />
+      <workItem from="1751779756030" duration="54000" />
+      <workItem from="1751779899252" duration="1747000" />
     </task>
+    <task id="LOCAL-00001" summary="feat top navigation bar">
+      <option name="closed" value="true" />
+      <created>1751648286496</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1751648286496</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat theme switcher">
+      <option name="closed" value="true" />
+      <created>1751698426689</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1751698426689</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat theme switcher">
+      <option name="closed" value="true" />
+      <created>1751699417444</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1751699417444</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,5 +148,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat top navigation bar" />
+    <MESSAGE value="feat theme switcher" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat theme switcher" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/ThemeSwitcher.tsx</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

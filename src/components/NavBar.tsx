@@ -10,7 +10,7 @@ import ExitIcon from '../../public/Exit.svg';
 const NavBar: React.FC = () => {
     return (
         <nav
-            className="bg-white dark:bg-darkbg pt-6 pb-6 pr-60 pl-60 border-b border-border flex items-center justify-between">
+            className="bg-white dark:bg-darkbg py-6 px-60 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-8">
                 <Link href=''><Image src="Logo_Cinema.svg" alt="logo" width="118" height="34"/></Link>
                 <Link href=''><Tab className='flex items-center gap-2 text-textTab dark:text-white'>
