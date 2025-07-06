@@ -10,7 +10,7 @@ interface UserRatings {
     kinopoisk: number;
 }
 
-interface Movie {
+export interface Movie {
     id: number;
     name: string;
     originalName: string;
@@ -23,4 +23,17 @@ interface Movie {
     genres: string[];
 }
 
-export default Movie;
+export interface Schedule {
+    date: string;
+    seances: Seance[];
+}
+
+export interface Seance {
+    time: string;
+    hall: Hall;
+}
+
+export interface Hall {
+    name: string;
+    places: object[];
+}

@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-        <body className={`flex flex-col gap-12 ${inter.className} bg-white dark:bg-darkbg text-textTab dark:text-white`}>
+        <body className={`flex flex-col ${inter.className} bg-white dark:bg-darkbg text-textTab dark:text-white`}>
         <NavBar/>
         {children}
         </body>

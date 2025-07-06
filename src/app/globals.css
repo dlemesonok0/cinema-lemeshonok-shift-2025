@@ -27,12 +27,14 @@ body {
 @theme {
   --color-border: #CED2DA;
   --color-textTab: #141C24;
+  --color-textSecondary: #637083;
   --color-darkbg: #141C24;
   --color-lightSecondary: #F3F4F6;
   --color-darkSecondary: #344051;
   --color-primary: #9534D2;
   --color-indicatorAttention: #FDD442;
   --color-indicatorLight: #CED2DA;
+  --color-indicatorMedium: #97A1AF;
 }
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

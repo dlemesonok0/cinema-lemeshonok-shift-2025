@@ -1,7 +1,8 @@
 'use client';
 
 import React, {useState, useEffect} from "react";
-import Image from "next/image";
+import MoonIcon from '../../public/Mode.svg';
+import SunIcon from '../../public/Sun.svg';
 
 const ThemeSwitcher = () => {
     const [theme, setTheme] = useState('');
@@ -29,8 +30,11 @@ const ThemeSwitcher = () => {
     }
 
     return (
-        <button onClick={toggleTheme}>
-            <Image src={theme !== 'dark' ? 'Mode.svg' : 'Sun.svg'} alt='theme' width='24' height='24'/>
+        <button className='cursor-pointer' onClick={toggleTheme}>
+            { theme !== 'dark'
+                ? <MoonIcon className='text-indicatorMedium' width='24' height='24'/>
+                : <SunIcon width='24' height='24'/>
+            }
         </button>
     );
 }
