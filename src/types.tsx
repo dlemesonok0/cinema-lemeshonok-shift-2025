@@ -35,5 +35,12 @@ export interface Seance {
 
 export interface Hall {
     name: string;
-    places: object[];
+    places: Place[][];
+}
+
+export interface Place {
+    price: number;
+    type: 'BLOCKED' | 'ECONOM' | 'COMFORT';
+    col?: number;
+    row?: number;
 }
