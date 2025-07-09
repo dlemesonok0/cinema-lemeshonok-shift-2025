@@ -9,7 +9,7 @@ import MovieAbout from '@/components/MovieAbout';
 import ScheduleTable from '@/components/ScheduleTable';
 import ArrowSmallLeft from '../../../../public/ArrowSmallLeft.svg';
 import Tab from "@/components/Tab";
-import CustomButton from "@/components/CustomButton";
+import Button from "@/components/Button";
 import {useSchedule} from "@/contexts/ScheduleContext";
 
 export default function MoviePage() {
@@ -59,8 +59,8 @@ export default function MoviePage() {
             <div className='flex flex-col gap-12'>
                 <MovieAbout movie={movie}/>
                 <ScheduleTable movie={movie}/>
-                <Link href={`/movie/${id}/checkout`}>
-                    {schedule && time ? <CustomButton>Продолжить</CustomButton> : null}
+                <Link href={`/movie/${id}/places`}>
+                    {schedule && time ? <Button>Продолжить</Button> : null}
                 </Link>
             </div>
         </div>

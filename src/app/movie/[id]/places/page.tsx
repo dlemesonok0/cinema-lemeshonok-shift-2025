@@ -3,7 +3,7 @@
 import React, {useEffect} from "react";
 import Link from "next/link";
 import {useParams} from "next/navigation";
-import CustomButton from "@/components/CustomButton";
+import Button from "@/components/Button";
 import {useSchedule} from "@/contexts/ScheduleContext";
 import ProgressBar from "@/components/ProgressBar";
 import Places from "@/components/Places";
@@ -66,11 +66,11 @@ export default function PlacesPage() {
                 : null}
             <div className="flex flex-row gap-2">
                 <Link href={`/movie/${id}`}>
-                    <CustomButton className='bg-transparent border-2 border-indicatorMedium'>
+                    <Button className='bg-transparent border-2 border-indicatorMedium'>
                         <span className='text-textTab dark:text-white'>Назад</span>
-                    </CustomButton>
+                    </Button>
                 </Link>
-                {seats.length > 0 ? <CustomButton>Купить</CustomButton> : null}
+                <Link href={`/movie/${id}/places/person`}>{seats.length > 0 ? <Button>Купить</Button> : null}</Link>
             </div>
         </div>
     );

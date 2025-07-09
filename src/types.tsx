@@ -44,3 +44,11 @@ export interface Place {
     col?: number;
     row?: number;
 }
+
+export interface PersonalData {
+    lastName: string;
+    firstName: string;
+    phone?: string;
+    email?: string;
+    address?: string;
+}
