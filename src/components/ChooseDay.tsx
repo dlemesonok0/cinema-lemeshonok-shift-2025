@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState} from 'react';
+import React from 'react';
 import {Schedule} from "@/types";
 import {format, parse} from "date-fns";
 import {ru} from "date-fns/locale";
@@ -15,6 +15,7 @@ const ChooseDay = ({schedules}: {
     }
     const {
         schedule, setSchedule,
+        setTime,
     } = context;
 
     return (
@@ -25,7 +26,10 @@ const ChooseDay = ({schedules}: {
                 return (
                     <div key={index}
                          className={`cursor-pointer py-2.5 px-4 ${isSelected ? 'bg-white dark:bg-darkbg' : ''} rounded-2xl border-lightSecondary dark:border-darkSecondary border-2`}
-                         onClick={() => setSchedule(item)}>
+                         onClick={() => {
+                             setSchedule(item);
+                             setTime('')
+                         }}>
                         {format(parse(item.date, 'dd.MM.yyyy', new Date()), 'EEEEEE, d MMM', {locale: ru})}
                     </div>
                 );

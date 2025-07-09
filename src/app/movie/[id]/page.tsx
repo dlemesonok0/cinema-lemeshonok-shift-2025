@@ -10,7 +10,7 @@ import ScheduleTable from '@/components/ScheduleTable';
 import ArrowSmallLeft from '../../../../public/ArrowSmallLeft.svg';
 import Tab from "@/components/Tab";
 import CustomButton from "@/components/CustomButton";
-import {ScheduleProvider} from "@/contexts/ScheduleContext";
+import {useSchedule} from "@/contexts/ScheduleContext";
 
 export default function MoviePage() {
     const [movie, setMovie] = useState<Movie>();
@@ -34,6 +34,14 @@ export default function MoviePage() {
             );
     }, [id]);
 
+    const context = useSchedule();
+    if (!context) {
+        return null;
+    }
+    const {
+        schedule, time
+    } = context;
+
     if (!movie) {
         return (
             <div className="text-center">
@@ -48,13 +56,13 @@ export default function MoviePage() {
                 <Tab className='flex items-center gap-4 text-textSecondary dark:text-textSecondary text-base'>
                     <ArrowSmallLeft width={24} height={24}/>Назад</Tab>
             </Link>
-            <ScheduleProvider>
-                <div className='flex flex-col gap-12'>
-                    <MovieAbout movie={movie}/>
-                    <ScheduleTable movie={movie}/>
-                    <CustomButton>Продолжить</CustomButton>
-                </div>
-            </ScheduleProvider>
+            <div className='flex flex-col gap-12'>
+                <MovieAbout movie={movie}/>
+                <ScheduleTable movie={movie}/>
+                <Link href={`/movie/${id}/checkout`}>
+                    {schedule && time ? <CustomButton>Продолжить</CustomButton> : null}
+                </Link>
+            </div>
         </div>
     );
 }

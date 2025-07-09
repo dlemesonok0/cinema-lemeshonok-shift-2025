@@ -13,7 +13,7 @@ interface ScheduleContextType {
     hall: Hall | null;
     setHall: (hall: Hall) => void | null;
 
-    seats: Place[] | null;
+    seats: Place[];
     setSeats: (seats: Place[]) => void | null;
     addSeat: (seat: Place) => void | null;
     removeSeat: (seat: Place) => void | null;
@@ -37,7 +37,7 @@ export const ScheduleProvider = ({ children }: ScheduleProviderProps) => {
             console.log('значение считано из стореджа')
             return saved ? JSON.parse(saved) : defaultValue;
         } catch (error) {
-            console.error(`Ошибка при получении ${key} из sessionStorage:`, error);
+            // console.error(`Ошибка при получении ${key} из sessionStorage:`, error);
             return defaultValue;
         }
     };
@@ -46,7 +46,7 @@ export const ScheduleProvider = ({ children }: ScheduleProviderProps) => {
         try {
             sessionStorage.setItem(key, JSON.stringify(value));
         } catch (error) {
-            console.error(`Ошибка при сохранении ${key} в sessionStorage:`, error);
+            // console.error(`Ошибка при сохранении ${key} в sessionStorage:`, error);
         }
     };
 
@@ -78,7 +78,6 @@ export const ScheduleProvider = ({ children }: ScheduleProviderProps) => {
     const [isHydrated, setIsHydrated] = useState(false);
 
     useEffect(() => {
-        // Сохраняем только после того, как состояние было гидратировано, чтобы избежать записи null при SSR
         if (isHydrated) {
             setSessionStorageValue('schedule', schedule);
         }
@@ -104,27 +103,27 @@ export const ScheduleProvider = ({ children }: ScheduleProviderProps) => {
 
     const addSeat = (seat: Place) => {
         if (!seats) {
-            seats = [];
+            setSeats([]);
         }
-        seats.push(seat)
+        setSeats([...seats, seat]);
     };
 
     const removeSeat = (seat: Place) => {
         if (!seats) {
             return;
         }
-        seats.splice(seats.indexOf(seat), 1);
+        setSeats(seats.filter(item => item.col !== seat.col || item.row !== seat.row));
     }
 
     const cleanSeats = () => {
-        seats = [];
+        setSeats([]);
     }
 
     const hasSeat = (seat: Place) => {
         if (!seats) {
             return false;
         }
-        return seats.includes(seat);
+        return !!seats.find((item) => item.col == seat.col && item.row == seat.row);
     }
 
     const contextValue = {
