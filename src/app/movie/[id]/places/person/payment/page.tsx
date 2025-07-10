@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import {useParams} from "next/navigation";
 import Button from "@/components/Button";
@@ -12,95 +12,123 @@ import {format, parse} from "date-fns";
 import {ru} from "date-fns/locale";
 import ValidatedInput from "@/components/ValidatedInput";
 import {usePersonalData} from "@/contexts/PersonalDataContext";
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
+import BankCard from "@/components/BankCard";
+import axios from "axios";
+import {API_URL} from "@/constants";
 
 export default function PlacesPage() {
+    const [isLoading, setIsLoading] = useState(false);
+
     const params = useParams();
     const id = params.id;
     const router = useRouter();
 
-    const {data} = usePersonalData();
+    const {data, setApiResponse} = usePersonalData();
+    const {schedule, time, isHydrated, hall, seats} = useSchedule();
 
-    const handleSubmit = () => {
-        if (!data.lastName || !data.firstName || !data.phone) {
+    if (!isHydrated || !schedule || !time || !hall) {
+        return null;
+    }
+
+    const handleSubmit = async () => {
+        if (!data.card_number || !data.card_date || !data.card_cvv) {
             alert("Please enter a data");
             return;
         }
 
-        router.push(`/movie/${id}/places/person/payment`)
-    }
+        setIsLoading(true);
+
+        console.log({
+            filmId: params.id,
+            person: {
+                firstname: data.firstname,
+                lastname: data.lastname,
+                middlename: data.middlename,
+                phone: data.phone,
+            },
+            debitCard: {
+                "pan": data.card_number.slice(0, 9),
+                "expireDate": data.card_date,
+                "cvv": data.card_cvv,
+            },
+            seance: {
+                date: schedule.date,
+                time: time,
+            },
+            tickets:
+                seats.map(seat => {
+                    return {row: seat.row, column: seat.column};
+                })
+        })
+
+        const response = await axios.post(`${API_URL}cinema/payment`, {
+            filmId: params.id,
+            person: {
+                firstname: data.firstname,
+                lastname: data.lastname,
+                middlename: data.middlename,
+                phone: data.phone,
+            },
+            debitCard: {
+                "pan": data.card_number.slice(0, 9),
+                "expireDate": data.card_date,
+                "cvv": data.card_cvv,
+            },
+            seance: {
+                date: schedule.date,
+                time: time,
+            },
+            tickets:
+                seats.map(seat => {
+                    return {row: seat.row, column: seat.column};
+                })
+        }, {
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+            .then(response => {
+                setIsLoading(response.data)
+                setApiResponse(response.data)
+                router.push(`/movie/results`)
+            })
+            .catch(error => {
+                    console.log(error)
+                }
+            )
+            .finally(() =>
+                setIsLoading(false)
+            )
+
+        // if (response.data && response.data.success) {
+        //     router.push(`/`);
+        //     setIsLoading(false);
+        // } else {
+        //     console.log(response.data.reason);
+        //     setIsLoading(false);
+        //     throw new Error(response.data.message || "Ошибка оплаты");
+        // }
+    };
 
     return (
-        <div className="flex flex-col px-60 text-textTab dark:text-white mt-12 gap-6">
-            <h2 className='font-bold text-3xl'>Введите ваши данные</h2>
-            <div className="flex flex-col gap-2">
-                <h3>Шаг 2 из 3</h3>
-                <ProgressBar width={368} percent={2 / 3}/>
+        !isLoading ?
+            <div className="flex flex-col px-60 text-textTab dark:text-white mt-12 gap-6">
+                <h2 className='font-bold text-3xl'>Введите данные карты для оплаты</h2>
+                <div className="flex flex-col gap-2">
+                    <h3>Шаг 3 из 3</h3>
+                    <ProgressBar width={368} percent={3 / 3}/>
+                </div>
+                <BankCard></BankCard>
+                <div className="flex flex-row gap-2">
+                    <Link href={`/movie/${id}/places`}>
+                        <Button className='bg-transparent border-2 border-indicatorMedium'>
+                            <span className='text-textTab dark:text-white'>Назад</span>
+                        </Button>
+                    </Link>
+                    <Button onClick={handleSubmit}>Оплатить</Button>
+                </div>
             </div>
-            <ValidatedInput
-                label='Фамилия'
-                initValue={data.lastName}
-                type='lastName'
-                required={true}
-                pattern={/^[А-ЯЁа-яё-]+$/}
-                minLength={2}
-                errorMessages={{
-                    required: 'Пожалуйста, введите фамилию',
-                    pattern: 'Только русские буквы и дефис',
-                    minLength: 'Минимум 2 символа'
-                }}
-                placeholder='Иванов'/>
-            <ValidatedInput
-                label="Имя"
-                initValue={data.firstName}
-                type='firstName'
-                required
-                pattern={/^[А-ЯЁа-яё-]+$/}
-                minLength={2}
-                errorMessages={{
-                    required: 'Пожалуйста, введите имя',
-                    pattern: 'Только русские буквы и дефис',
-                    minLength: 'Минимум 2 символа'
-                }}
-                placeholder='Иван'
-            />
-            <ValidatedInput
-                label="Телефон"
-                initValue={data.phone}
-                type="phone"
-                required
-                pattern={/^(\+7|8)[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/}
-                errorMessages={{
-                    required: 'Пожалуйста, введите телефон',
-                    pattern: 'Формат: +7 (XXX) XXX-XX-XX'
-                }}
-                placeholder="+7 (XXX) XXX-XX-XX"
-            />
-            <ValidatedInput
-                label="Email"
-                initValue={data.email}
-                type="email"
-                pattern={/^[^\s@]+@[^\s@]+\.[^\s@]+$/}
-                errorMessages={{
-                    required: 'Пожалуйста, введите email',
-                    pattern: 'Некорректный формат email'
-                }}
-                placeholder="example@mail.ru"
-            />
-            <ValidatedInput
-                label="Адрес"
-                initValue={data.address}
-                type="address"
-                placeholder="г. Новосибирск, ул. Кирова, д. 86"
-            />
-            <div className="flex flex-row gap-2">
-                <Link href={`/movie/${id}/places`}>
-                    <Button className='bg-transparent border-2 border-indicatorMedium'>
-                        <span className='text-textTab dark:text-white'>Назад</span>
-                    </Button>
-                </Link>
-                <Button onClick={handleSubmit}>Продолжить</Button>
-            </div>
-        </div>
+            : "Покупаем билет"
     );
 }

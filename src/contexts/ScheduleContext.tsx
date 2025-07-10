@@ -112,7 +112,7 @@ export const ScheduleProvider = ({ children }: ScheduleProviderProps) => {
         if (!seats) {
             return;
         }
-        setSeats(seats.filter(item => item.col !== seat.col || item.row !== seat.row));
+        setSeats(seats.filter(item => item.column !== seat.column || item.row !== seat.row));
     }
 
     const cleanSeats = () => {
@@ -123,7 +123,7 @@ export const ScheduleProvider = ({ children }: ScheduleProviderProps) => {
         if (!seats) {
             return false;
         }
-        return !!seats.find((item) => item.col == seat.col && item.row == seat.row);
+        return !!seats.find((item) => item.column == seat.column && item.row == seat.row);
     }
 
     const contextValue = {
@@ -146,5 +146,5 @@ export const useSchedule = () => {
     if (!context) {
         throw new Error('useSchedule must be used within a ScheduleProvider');
     }
-    return useContext(ScheduleContext);
+    return context;
 }

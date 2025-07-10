@@ -1,11 +1,13 @@
 'use client';
 
 import React, {createContext, ReactNode, useContext, useState, useEffect, useCallback} from 'react';
-import {Hall, PersonalData, Place, Schedule} from '@/types';
+import {apiResponce, Hall, PersonalData, Place, Schedule} from '@/types';
 
 interface PersonalDataContextType {
     data: PersonalData;
-    updateField: <K extends keyof PersonalData>(field: K, value: PersonalData[K]) => void;
+    updateFieldData: <K extends keyof PersonalData>(field: K, value: PersonalData[K]) => void;
+    apiResponse: apiResponce | undefined;
+    setApiResponse: (response: apiResponce) => void;
 }
 
 const PersonalDataContext = createContext<PersonalDataContextType | undefined>(undefined);
@@ -16,19 +18,22 @@ interface PersonalDataProviderProps {
 
 export const PersonalDataProvider = ({ children }: PersonalDataProviderProps) => {
     const [data, setData] = useState<PersonalData>({
-        lastName: '',
-        firstName: '',
+        lastname: '',
+        firstname: '',
+        middlename: '',
         phone: '',
         email: '',
         address: ''
     });
 
-    const updateField = useCallback(<K extends keyof PersonalData>(field: K, value: PersonalData[K]) => {
+    const [apiResponse, setApiResponse] = useState<apiResponce | undefined>(undefined);
+
+    const updateFieldData = useCallback(<K extends keyof PersonalData>(field: K, value: PersonalData[K]) => {
         setData(prev => ({ ...prev, [field]: value }));
     }, []);
 
     return (
-        <PersonalDataContext.Provider value={{data, updateField}}>
+        <PersonalDataContext.Provider value={{data, updateFieldData, apiResponse, setApiResponse}}>
             {children}
         </PersonalDataContext.Provider>
     )

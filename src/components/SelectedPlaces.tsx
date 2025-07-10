@@ -6,13 +6,13 @@ interface SelectedPlacesListProps {
 
 const SelectedPlaces = ({ selectedPlaces }: SelectedPlacesListProps) => {
     const groupedByRow = selectedPlaces.reduce((acc, place) => {
-        if (!place.row || !place.col) {
+        if (!place.row || !place.column) {
             return acc;
         }
         if (!acc[place.row]) {
             acc[place.row] = [];
         }
-        acc[place.row].push(place.col + 1); // +1 потому что индексы начинаются с 0
+        acc[place.row].push(place.column + 1);
         return acc;
     }, {} as Record<number, number[]>);
 

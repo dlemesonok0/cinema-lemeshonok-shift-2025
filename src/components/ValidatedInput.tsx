@@ -16,6 +16,7 @@ type ValidatedInputProps = {
         pattern?: string;
         minLength?: string;
     };
+    className?: string;
 };
 
 const ValidatedInput = ({
@@ -26,12 +27,12 @@ const ValidatedInput = ({
                             minLength,
                             placeholder = '',
                             errorMessages = {},
-                            initValue = ''
+                            className = '',
                         }: ValidatedInputProps) => {
-    const [value, setValue] = useState(initValue);
-    const [error, setError] = useState('');
+    const {data, updateFieldData} = usePersonalData();
 
-    const {updateField} = usePersonalData();
+    const [value, setValue] = useState(data[type]);
+    const [error, setError] = useState('');
 
     const validate = (val: string) => {
         if (required && !val.trim()) {
@@ -51,12 +52,12 @@ const ValidatedInput = ({
         setValue(val);
         setError(validate(val));
         if (error.length == 0 && val.length > 0) {
-            updateField(type, val);
+            updateFieldData(type, val);
         }
     };
 
     return (
-        <div className="mb-4">
+        <div className={``}>
             <label className="block text-sm font-medium mb-1">
                 {label} {required && '*'}
             </label>
@@ -64,7 +65,7 @@ const ValidatedInput = ({
                 type={type}
                 value={value}
                 onChange={handleChange}
-                className={`w-[368px] p-2 border rounded-xl ${
+                className={`w-[368px] ${className} p-2 border rounded-xl ${
                     error ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder={placeholder}

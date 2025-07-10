@@ -22,7 +22,7 @@ export default function PlacesPage() {
     const {data} = usePersonalData();
 
     const handleSubmit = () => {
-        if (!data.lastName || !data.firstName || !data.phone) {
+        if (!data.lastname || !data.firstname || !data.phone) {
             alert("Please enter a data");
             return;
         }
@@ -39,8 +39,8 @@ export default function PlacesPage() {
             </div>
             <ValidatedInput
                 label='Фамилия'
-                initValue={data.lastName}
-                type='lastName'
+                initValue={data.lastname}
+                type='lastname'
                 required={true}
                 pattern={/^[А-ЯЁа-яё-]+$/}
                 minLength={2}
@@ -52,8 +52,22 @@ export default function PlacesPage() {
                 placeholder='Иванов'/>
             <ValidatedInput
                 label="Имя"
-                initValue={data.firstName}
-                type='firstName'
+                initValue={data.firstname}
+                type='firstname'
+                required
+                pattern={/^[А-ЯЁа-яё-]+$/}
+                minLength={2}
+                errorMessages={{
+                    required: 'Пожалуйста, введите имя',
+                    pattern: 'Только русские буквы и дефис',
+                    minLength: 'Минимум 2 символа'
+                }}
+                placeholder='Иван'
+            />
+            <ValidatedInput
+                label="Отчество"
+                initValue={data.firstname}
+                type='middlename'
                 required
                 pattern={/^[А-ЯЁа-яё-]+$/}
                 minLength={2}

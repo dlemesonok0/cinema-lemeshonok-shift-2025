@@ -6,13 +6,14 @@ import axios from "axios";
 import ChooseDay from '@/components/ChooseDay';
 import SeanceListForDay from '@/components/SeanceListForDay';
 import {useSchedule} from "@/contexts/ScheduleContext";
+import {API_URL} from "@/constants";
 
 const ScheduleTable = ({movie}: { movie: Movie }) => {
     const [schedules, setSchedules] = useState<Schedule[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`https://shift-intensive.ru/api/cinema/film/${movie.id}/schedule`)
+        axios.get(`${API_URL}cinema/film/${movie.id}/schedule`)
             .then(response => (
                 setSchedules(response.data.schedules)
             ))

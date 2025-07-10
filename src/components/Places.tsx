@@ -42,7 +42,7 @@ const Places = () => {
                 {places.map((row, rowIndex) => (
                     row.map((place, colIndex) => {
                         place.row = rowIndex;
-                        place.col = colIndex;
+                        place.column = colIndex;
 
                         const isBlocked = place.type === 'BLOCKED';
                         const isSelected = hasSeat(place);

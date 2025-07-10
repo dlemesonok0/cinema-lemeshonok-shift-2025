@@ -11,6 +11,7 @@ import ArrowSmallLeft from '../../../../public/ArrowSmallLeft.svg';
 import Tab from "@/components/Tab";
 import Button from "@/components/Button";
 import {useSchedule} from "@/contexts/ScheduleContext";
+import {API_URL} from "@/constants";
 
 export default function MoviePage() {
     const [movie, setMovie] = useState<Movie>();
@@ -22,7 +23,7 @@ export default function MoviePage() {
     useEffect(() => {
         if (!id) return;
 
-        axios.get(`https://shift-intensive.ru/api/cinema/film/${id}`)
+        axios.get(`${API_URL}cinema/film/${id}`)
             .then(response => (
                 setMovie(response.data.film)
             ))
