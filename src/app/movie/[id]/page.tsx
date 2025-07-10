@@ -9,13 +9,13 @@ import MovieAbout from '@/components/MovieAbout';
 import ScheduleTable from '@/components/ScheduleTable';
 import ArrowSmallLeft from '../../../../public/ArrowSmallLeft.svg';
 import Tab from "@/components/Tab";
-import CustomButton from "@/components/CustomButton";
+import Button from "@/components/Button";
+import {useSchedule} from "@/contexts/ScheduleContext";
+import {API_URL} from "@/constants";
 
 export default function MoviePage() {
     const [movie, setMovie] = useState<Movie>();
     const [loading, setLoading] = useState(true);
-
-    // TODO: прокинуть дату, время и зал в состояние этой страницы
 
     const params = useParams();
     const id = params.id;
@@ -23,7 +23,7 @@ export default function MoviePage() {
     useEffect(() => {
         if (!id) return;
 
-        axios.get(`https://shift-intensive.ru/api/cinema/film/${id}`)
+        axios.get(`${API_URL}cinema/film/${id}`)
             .then(response => (
                 setMovie(response.data.film)
             ))
@@ -34,6 +34,14 @@ export default function MoviePage() {
                 setLoading(false)
             );
     }, [id]);
+
+    const context = useSchedule();
+    if (!context) {
+        return null;
+    }
+    const {
+        schedule, time
+    } = context;
 
     if (!movie) {
         return (
@@ -52,7 +60,9 @@ export default function MoviePage() {
             <div className='flex flex-col gap-12'>
                 <MovieAbout movie={movie}/>
                 <ScheduleTable movie={movie}/>
-                <CustomButton>Продолжить</CustomButton>
+                <Link href={`/movie/${id}/places`}>
+                    {schedule && time ? <Button>Продолжить</Button> : null}
+                </Link>
             </div>
         </div>
     );

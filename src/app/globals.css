@@ -35,6 +35,7 @@ body {
   --color-indicatorAttention: #FDD442;
   --color-indicatorLight: #CED2DA;
   --color-indicatorMedium: #97A1AF;
+  --color-indicatorPositive: #40BF7F;
 }
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

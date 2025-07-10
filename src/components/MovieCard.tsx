@@ -3,7 +3,7 @@ import React, {} from 'react';
 import {Movie} from '@/types';
 import StarRating from "../components/StarRating";
 import MoviePoster from "@/components/MoviePoster";
-import CustomButton from '@/components/CustomButton';
+import Button from '@/components/Button';
 
 const MovieCard = ({movie}: { movie: Movie }) => {
     return (
@@ -21,7 +21,7 @@ const MovieCard = ({movie}: { movie: Movie }) => {
                     className='text-sm font-normal text-textSecondary dark:text-textSecondary'>{`Kinopoisk - ${movie.userRatings.kinopoisk}`}</div>
             </div>
             <Link href={`/movie/${movie.id}`}>
-                <CustomButton>Подробнее</CustomButton>
+                <Button>Подробнее</Button>
             </Link>
         </div>
     )

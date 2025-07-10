@@ -3,6 +3,8 @@ import {Inter} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import React from "react";
+import {ScheduleProvider} from "@/contexts/ScheduleContext";
+import {PersonalDataProvider} from "@/contexts/PersonalDataContext";
 
 const inter = Inter({subsets: ['latin', "cyrillic"]});
 
@@ -20,7 +22,11 @@ export default function RootLayout({
         <html lang="en">
         <body className={`flex flex-col ${inter.className} bg-white dark:bg-darkbg text-textTab dark:text-white`}>
         <NavBar/>
-        {children}
+        <PersonalDataProvider>
+            <ScheduleProvider>
+                {children}
+            </ScheduleProvider>
+        </PersonalDataProvider>
         </body>
         </html>
     );

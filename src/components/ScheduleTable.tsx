@@ -5,15 +5,15 @@ import {Movie, Schedule} from '@/types';
 import axios from "axios";
 import ChooseDay from '@/components/ChooseDay';
 import SeanceListForDay from '@/components/SeanceListForDay';
+import {useSchedule} from "@/contexts/ScheduleContext";
+import {API_URL} from "@/constants";
 
 const ScheduleTable = ({movie}: { movie: Movie }) => {
     const [schedules, setSchedules] = useState<Schedule[]>([]);
-    const [schedule, setSchedule] = useState<Schedule>();
-    const [time, setTime] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`https://shift-intensive.ru/api/cinema/film/${movie.id}/schedule`)
+        axios.get(`${API_URL}cinema/film/${movie.id}/schedule`)
             .then(response => (
                 setSchedules(response.data.schedules)
             ))
@@ -25,19 +25,19 @@ const ScheduleTable = ({movie}: { movie: Movie }) => {
             );
     }, []);
 
-    const handleSchedule = (schedule: Schedule) => {
-        setSchedule(schedule);
+    const context = useSchedule();
+    if (!context) {
+        return null;
     }
-
-    const handleTime = (time: string) => {
-        setTime(time);
-    }
+    const {
+        schedule,
+    } = context;
 
     return (
         <div className='flex flex-col gap-6'>
             <h2 className='text-3xl font-bold'>Расписание</h2>
-            <ChooseDay schedules={schedules} onSelectDate={handleSchedule}/>
-            {schedule ? <SeanceListForDay schedule={schedule} onSelectTime={handleTime}/> : null}
+            <ChooseDay schedules={schedules}/>
+            {schedule ? <SeanceListForDay schedule={schedule}/> : null}
         </div>
     );
 }
