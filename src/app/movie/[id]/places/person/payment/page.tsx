@@ -1,16 +1,11 @@
 'use client';
 
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Link from "next/link";
 import {useParams} from "next/navigation";
 import Button from "@/components/Button";
 import {useSchedule} from "@/contexts/ScheduleContext";
 import ProgressBar from "@/components/ProgressBar";
-import Places from "@/components/Places";
-import SelectedPlaces from "@/components/SelectedPlaces";
-import {format, parse} from "date-fns";
-import {ru} from "date-fns/locale";
-import ValidatedInput from "@/components/ValidatedInput";
 import {usePersonalData} from "@/contexts/PersonalDataContext";
 import {useRouter} from 'next/navigation';
 import BankCard from "@/components/BankCard";
